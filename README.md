@@ -31,21 +31,21 @@ CMS sederhana untuk blog dengan fitur:
 
 4. Jalankan:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 ## **Dokumentasi API**
 Import file `CMS_BLOG.postman_collection.json`
 
 ## **Docker**
-1. Build image:
+1. Pastikan App sudah di build, jika belum jalankan:
    ```bash
-   docker build -t cms-blog .
+   npm run build
    ```
 
-2. Jalankan container:
+2. Jalankan container menggunakan docker compose v2:
    ```bash
-   docker run -p 3000:3000 --env-file .env cms-blog
+   docker compose up -d
    ```
 
 ## **Endpoint Utama**
