@@ -1,10 +1,6 @@
 import { Schema, model, Document, Types } from 'mongoose';
 
-interface IUserMethods {
-  comparePassword(candidatePassword: string): Promise<boolean>;
-}
-
-export interface IUser extends Document, IUserMethods {
+export interface IUser extends Document {
   _id: Types.ObjectId;
   name: string;
   username: string;
@@ -13,7 +9,7 @@ export interface IUser extends Document, IUserMethods {
   updatedAt: Date;
 }
 
-const userSchema = new Schema<IUser, IUserMethods>(
+const userSchema = new Schema<IUser>(
   {
     name: { 
       type: String, 
