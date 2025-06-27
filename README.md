@@ -21,7 +21,9 @@ CMS sederhana untuk blog dengan fitur:
 2. Install dependencies:
    ```bash
    npm install
+   ```
    or
+   ```bash
    pnpm install
    ```
 
@@ -33,7 +35,7 @@ CMS sederhana untuk blog dengan fitur:
    ```
 
 ## **Dokumentasi API**
-Lihat [Postman Collection](link) atau import file `CMS-BLOG-API.postman_collection.json`
+Import file `CMS_BLOG.postman_collection.json`
 
 ## **Docker**
 1. Build image:
