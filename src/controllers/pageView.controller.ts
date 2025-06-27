@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import { PageViewService } from '../services/pageView.service';
 import { ApiResponse } from '../utils/apiResponse';
 
-export class PageViewController {
-  static async trackView(req: Request, res: Response) {
+export const PageViewController = {
+  async trackView(req: Request, res: Response) {
     try {
       const { articleId } = req.body;
       const metadata = {
@@ -17,9 +17,9 @@ export class PageViewController {
     } catch (error) {
       ApiResponse.error(res, error);
     }
-  }
+  },
 
-  static async getViewCount(req: Request, res: Response) {
+  async getViewCount(req: Request, res: Response) {
     try {
       const { article, startAt, endAt } = req.query;
       
@@ -33,9 +33,9 @@ export class PageViewController {
     } catch (error) {
       ApiResponse.error(res, error);
     }
-  }
+  },
 
-  static async getAggregatedViews(req: Request, res: Response) {
+  async getAggregatedViews(req: Request, res: Response) {
     try {
       const { interval, article, startAt, endAt } = req.query;
       

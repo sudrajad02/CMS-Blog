@@ -3,8 +3,8 @@ import { Article } from '../models/article.model';
 import { ApiError } from '../utils/apiError';
 import { Types } from 'mongoose';
 
-export class PageViewService {
-  static async trackView(
+export const PageViewService = {
+  async trackView(
     articleId: string,
     metadata?: {
       userAgent?: string;
@@ -22,9 +22,9 @@ export class PageViewService {
       article: articleId,
       ...metadata
     });
-  }
+  },
 
-  static async getViewCount(
+  async getViewCount(
     articleId?: string,
     startDate?: Date,
     endDate?: Date
@@ -40,9 +40,9 @@ export class PageViewService {
     }
 
     return await PageView.countDocuments(filter);
-  }
+  },
 
-  static async getAggregatedViews(
+  async getAggregatedViews(
     interval: 'hourly' | 'daily' | 'monthly',
     articleId?: string,
     startDate?: Date,
