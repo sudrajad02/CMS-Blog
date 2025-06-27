@@ -1,5 +1,4 @@
-import { Schema, model, Document, Types, Model } from 'mongoose';
-import bcrypt from 'bcryptjs';
+import { Schema, model, Document, Types } from 'mongoose';
 
 interface IUserMethods {
   comparePassword(candidatePassword: string): Promise<boolean>;
@@ -12,10 +11,6 @@ export interface IUser extends Document, IUserMethods {
   password: string;
   createdAt: Date;
   updatedAt: Date;
-}
-
-interface UserModel extends Model<IUser> {
-  findByUsername(username: string): Promise<IUser>;
 }
 
 const userSchema = new Schema<IUser, IUserMethods>(
@@ -47,11 +42,4 @@ const userSchema = new Schema<IUser, IUserMethods>(
 // Index untuk optimasi query
 userSchema.index({ username: 1 });
 
-userSchema.method('comparePassword', async function(
-  this: IUser,
-  candidatePassword: string
-): Promise<boolean> {
-  return await bcrypt.compare(candidatePassword, this.password);
-});
-
-export const User = model<IUser, UserModel>('User', userSchema);
+export const User = model<IUser>('User', userSchema);

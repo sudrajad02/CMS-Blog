@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import { User, IUser } from '../models/user.model';
-import { ILoginResponse, IUserResponse } from '../intercaces/auth.response';
+import { ILoginResponse, IUserResponse } from '../interfaces/auth.response';
 import { ApiError } from '../utils/apiError';
 
 export const AuthService = {
@@ -14,7 +15,7 @@ export const AuthService = {
       throw new ApiError(401, 'Incorrect username or password');
     }
 
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await bcrypt.compare(password, user.password);
     
     if (!isMatch) {
       throw new ApiError(401, 'Incorrect username or password');
@@ -38,7 +39,6 @@ export const AuthService = {
 
   async logout(token: string): Promise<void> {
     // Implementasi sederhana tanpa blacklist:
-    // Di production, simpan token yang sudah logout
     console.log(`Token logged out: ${token}`);
   },
 
