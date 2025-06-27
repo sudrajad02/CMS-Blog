@@ -22,16 +22,12 @@ CMS sederhana untuk blog dengan fitur:
    ```bash
    npm install
    ```
-   or
-   ```bash
-   pnpm install
-   ```
 
 3. Copy file `.env` dari `.env.sample` kemudian edit dengan sesuai kebutuhan:
 
 4. Jalankan:
    ```bash
-   pnpm run dev
+   npm run dev
    ```
 
 ## **Dokumentasi API**
